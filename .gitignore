@@ -1,6 +1,7 @@
 *.retry
 .idea/
 configs/*
+config.cfg.back
 inventory_users
 *.kate-swp
 *env
