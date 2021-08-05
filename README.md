@@ -261,3 +261,31 @@ All donations support continued development. Thanks!
 * We also accept and appreciate contributions of new code and bugfixes via Github Pull Requests.
 
 Algo is licensed and distributed under the AGPLv3. If you want to distribute a closed-source modification or service based on Algo, then please consider <a href="mailto:opensource@trailofbits.com">purchasing an exception</a> . As with the methods above, this will help support continued development.
+
+## Extra: integration with 1Password
+
+You can configure the [Makefile](Makefile) with the constant `VAULT`. Once set you will be able to do the actions below and have all your configuration managed by [1Password](https://1password.com) and not by git.
+
+### Push your configuration to 1Password
+
+This action will upload all the content of the `configs` directory and your `config.cfg` to your vault. Keep in mind that your changes to the `config.cfg` file are not saved on your repo for privacy and to help you do diff easely and check what was added or removed excluding your changes.
+
+```bash
+make push_config
+```
+
+### Get your configuration from 1Password
+
+You download the content of the `configs` directory and your `config.cfg` file. The original `config.cfg` file from the repo still there as `config.cfg.back` in case you would like to check it and do a merge with other tools and not with git.
+
+```bash
+make get_config
+```
+
+### Cleanup everything
+
+This action cleans everything added by you on your local repo. Be sure to do a `make push_config` before, if you did changes, to have everything valuable stored again inside 1Password or you will lose it.
+
+```bash
+make clean_config
+```
