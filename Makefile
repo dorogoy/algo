@@ -69,3 +69,21 @@ clean_config:
 	rm -rf configs && mkdir configs && touch configs/.gitinit
 	rm -f config.cfg.back configs.tgz
 	git restore config.cfg
+
+algo: env_ok
+	# source .env/bin/activate
+	./algo
+
+algo_users_update: env_ok
+	# source .env/bin/activate
+	./algo update-users
+
+env_ok:
+	python3 -m venv .env
+	ln -s .env venv
+	.env/bin/python3 -m pip install -U pip virtualenv
+	.env/bin/python3 -m pip install -r requirements.txt
+	touch env_ok
+
+clean: clean_config
+	rm -rf .env venv env_ok
